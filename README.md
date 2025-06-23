@@ -68,7 +68,6 @@ http://127.0.0.1:5000/
 
 ## 📸 Dashboard Snapshots
 
-> *(Add real image previews if you’d like)*
 
 - `static/income_vs_purchase.png`
 - `static/loyalty_score_vs_purchase_frequency.png`
