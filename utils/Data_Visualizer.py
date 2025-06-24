@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def generate_graph():
-    location = "Customer Purchasing Behaviors.csv"
+    location = "datasets/Customer_Purchasing_Behaviors.csv"
     df = pd.read_csv(location)
 
-    destination = "static"
+    destination = "static/graphs"
     os.makedirs(destination, exist_ok=True)
 
     sns.set_theme(style="whitegrid")
