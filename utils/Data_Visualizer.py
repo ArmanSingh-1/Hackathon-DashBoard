@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def generate_graph():
-    location = "Customer Purchasing Behaviors.csv"
+    location = "datasets/Customer Purchasing Behaviors.csv"
     df = pd.read_csv(location)
 
-    destination = "static"
+    destination = "static/graphs"
     os.makedirs(destination, exist_ok=True)
 
     sns.set_theme(style="whitegrid")
@@ -66,7 +66,7 @@ def generate_graph():
 
     region_avg = df.groupby(['region', 'age_group'], observed=True)['purchase_amount'].mean().reset_index()
 
-    plt.figure(figsize=(16, 12))
+    plt.figure(figsize=(8, 6))
     sns.barplot(
     data=region_avg,
     x='region',
