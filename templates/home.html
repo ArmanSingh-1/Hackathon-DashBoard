@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Welcome - Data Dashboard</title>
-</head>
-<body>
-    <h1>Welcome to the CSV Dashboard</h1>
-    <p>This tool allows you to upload CSV files and visualize your data.</p>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOME PAGE</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    </head>
+    <body>
+        <nav>
+            <div style="display: inline;"><a href="/">Home</a></div>
+            <div style="display: inline; margin-left: 10px;">
+                <a href="/login">Login</a> | <a href="/signup">Signup</a>
+            </div>
+        </nav>
+
+        <section class="welcome-section">
+            <h1>Welcome to Segment AI</h1>
+            <p>AI-powered customer segmentation for smarter marketing.</p>
+            <button id="get-started-btn" type="button">Get Started</button>
+        </section>
+
+        <section class="upload-section">
+            <h2>Upload CSV File</h2>
+            <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
+            <input type="file" id="file-upload" accept=".csv" />
+            <div id="uploaded-file-name"></div>
+            <button id="submit-btn" type="button">Submit</button>
+        </section>
+
+        <div class="demo">
+            <img src="static/income_vs_purchase.png" alt="Income vs Purchase">
+            <img src="static/loyalty_score_vs_purchase_frequency.png">
+            <img src="static/region_avg_spending.png" alt="Region Average Spending">
+        </div>
+
+        <section class="feedback">
+            <h2>We value your feedback</h2>
+            <form action="/submit-feedback" method="post">
+                <label for="feedback-text">Your thoughts:</label><br>
+                <textarea id="feedback-text" name="feedback" rows="5" cols="40" placeholder="Share your experience..."></textarea><br>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+
+        <div class="footer">
+            <hr>
+            <p>Contact us: <a href="xyzsupport@segmentai.com">support@segmentai.com</a></p>
+            <p>Phone: xyz</p>
+            <p>&copy; 2025 Segment AI. All rights reserved.</p>
+        </div>
+    </body>
 </html>
