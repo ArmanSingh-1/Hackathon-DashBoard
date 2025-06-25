@@ -68,11 +68,11 @@ def generate_graph():
 
     plt.figure(figsize=(16, 12))
     sns.barplot(
-    data=region_avg,
-    x='region',
-    y='purchase_amount',
-    hue='age_group',
-    palette='Set2'
+        data=region_avg,
+        x='region',
+        y='purchase_amount',
+        hue='age_group',
+        palette='Set2'
     )
     plt.title("Average Purchase Amount by Region and Age Group")
     plt.xlabel("Region")
