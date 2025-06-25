@@ -1,0 +1,159 @@
+
+
+/* body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #444444;
+}
+
+input[type="text"],
+input[type="password"],input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #0078D4;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0078D4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005fa3;
+} */
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f8ff; /* Lighter, subtle blue for the overall body background */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  background-color: #ffffff; /* White background for the form itself */
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
+  width: 320px;
+  border: 1px solid #e0e0e0; /* Subtle border for definition */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px; /* Increased margin for better spacing */
+  color: #2c3e50; /* Darker, professional blue-grey for heading */
+  position: relative; /* For the subtle underline effect */
+  padding-bottom: 10px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #0078D4; /* Blue underline */
+  border-radius: 2px;
+}
+
+label {
+  display: block;
+  margin-top: 18px; /* Slightly more space above labels */
+  margin-bottom: 6px;
+  font-weight: 600; /* Bolder font for labels */
+  color: #34495e; /* Darker color for labels */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px; /* Increased padding for better touch targets */
+  border: 1px solid #dcdcdc; /* Lighter default border */
+  border-radius: 6px; /* Slightly more rounded corners */
+  box-sizing: border-box;
+  background-color: #fdfdfd; /* Very subtle background for input fields */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+}
+
+input:focus {
+  border-color: #0078D4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2); /* Soft blue glow on focus */
+}
+
+button {
+  width: 100%;
+  padding: 14px; /* Increased padding for button */
+  background-color: #0078D4;
+  color: white;
+  border: none;
+  border-radius: 6px; /* Match input field border-radius */
+  margin-top: 25px; /* More space above the button */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added transform and box-shadow for hover */
+  letter-spacing: 0.5px; /* Slight letter spacing for better readability */
+  text-transform: uppercase; /* Make button text uppercase */
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 120, 212, 0.3); /* Blue shadow on hover */
+}
+
+button:active {
+  transform: translateY(0); /* Press down effect */
+  box-shadow: 0 2px 4px rgba(0, 120, 212, 0.2); /* Smaller shadow on active */
+  background-color: #004c8c; /* Slightly darker when clicked */
+}
