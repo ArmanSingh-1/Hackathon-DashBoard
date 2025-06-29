@@ -1,53 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HOME PAGE</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-    </head>
-    <body>
-        <nav>
-            <div style="display: inline;"><a href="/">Home</a></div>
-            <div style="display: inline; margin-left: 10px;">
-                <a href="/login">Login</a> | <a href="/signup">Signup</a>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segment AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <div class="logo">Segment AI</div>
+            <div class="nav-links">
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
             </div>
         </nav>
+    </header>
 
-        <section class="welcome-section">
-            <h1>Welcome to Segment AI</h1>
-            <p>AI-powered customer segmentation for smarter marketing.</p>
-            <button id="get-started-btn" type="button">Get Started</button>
-        </section>
+    <section class="welcome-section">
+        <h1>Welcome to Segment AI</h1>
+        <p>AI-powered customer segmentation for smarter marketing.</p>
+        <button id="get-started-btn">Get Started</button>
+    </section>
 
-        <section class="upload-section">
-            <h2>Upload CSV File</h2>
-            <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
-            <input type="file" id="file-upload" accept=".csv" />
-            <div id="uploaded-file-name"></div>
-            <button id="submit-btn" type="button">Submit</button>
-        </section>
+    <section class="about-section">
+        <h2>About Segment AI</h2>
+        <p>
+            Segment AI helps businesses uncover valuable customer segments using machine learning. With real-time insights and intuitive graphs, you can craft smarter, data-driven campaigns with ease. Whether you're a startup or enterprise, Segment AI transforms your data into actionable marketing strategies—no coding expertise required. It’s segmentation, simplified.
+        </p>
+    </section>
 
-        <div class="demo">
-            <img src="static/income_vs_purchase.png" alt="Income vs Purchase">
-            <img src="static/loyalty_score_vs_purchase_frequency.png">
-            <img src="static/region_avg_spending.png" alt="Region Average Spending">
-        </div>
+    <div class="demo">
+        <img src="static/graphs/income_vs_purchase.png" alt="Income vs Purchase">
+        <img src="static/graphs/loyalty_score_vs_purchase_frequency.png">
+        <img src="static/graphs/region_avg_spending.png" alt="Region Average Spending">
+    </div>
 
-        <section class="feedback">
-            <h2>We value your feedback</h2>
-            <form action="/submit-feedback" method="post">
-                <label for="feedback-text">Your thoughts:</label><br>
-                <textarea id="feedback-text" name="feedback" rows="5" cols="40" placeholder="Share your experience..."></textarea><br>
-                <button type="submit">Submit Feedback</button>
+    <section class="feedback enhanced-feedback">
+        <h2>We’d Love Your Feedback</h2>
+        <p>Help us make Segment AI even better. Share your suggestions, issues, or overall experience below.</p>
+        <form action="/submit-feedback" method="post">
+            <textarea name="feedback" rows="6" cols="60" placeholder="Your feedback matters to us..." required></textarea>
+            <br />
+            <input type="text" name="name" placeholder="Your Name (optional)" />
+            <input type="email" name="email" placeholder="Your Email (optional)" />
+            <br />
+            <button type="submit" class="submit-btn">Submit Feedback</button>
             </form>
-        </section>
-
-        <div class="footer">
-            <hr>
-            <p>Contact us: <a href="xyzsupport@segmentai.com">support@segmentai.com</a></p>
-            <p>Phone: xyz</p>
-            <p>&copy; 2025 Segment AI. All rights reserved.</p>
-        </div>
-    </body>
+    </section>
+</body>
 </html>

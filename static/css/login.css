@@ -1,6 +1,6 @@
 
 
-/* body {
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f6f8;
   margin: 0;
@@ -62,12 +62,12 @@ button {
 
 button:hover {
   background-color: #005fa3;
-} */
+}
 
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f8ff; /* Lighter, subtle blue for the overall body background */
+  background-color: #f0f8ff; 
   margin: 0;
   padding: 0;
   display: flex;
@@ -77,19 +77,19 @@ body {
 }
 
 form {
-  background-color: #ffffff; /* White background for the form itself */
+  background-color: #ffffff; 
   padding: 30px 40px;
   border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); 
   width: 320px;
-  border: 1px solid #e0e0e0; /* Subtle border for definition */
+  border: 1px solid #e0e0e0; 
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 25px; /* Increased margin for better spacing */
-  color: #2c3e50; /* Darker, professional blue-grey for heading */
-  position: relative; /* For the subtle underline effect */
+  margin-bottom: 25px; 
+  color: #2c3e50; 
+  position: relative; 
   padding-bottom: 10px;
 }
 
@@ -101,59 +101,59 @@ h2::after {
   transform: translateX(-50%);
   width: 50px;
   height: 3px;
-  background-color: #0078D4; /* Blue underline */
+  background-color: #0078D4; 
   border-radius: 2px;
 }
 
 label {
   display: block;
-  margin-top: 18px; /* Slightly more space above labels */
+  margin-top: 18px; 
   margin-bottom: 6px;
-  font-weight: 600; /* Bolder font for labels */
-  color: #34495e; /* Darker color for labels */
+  font-weight: 600; 
+  color: #34495e; 
 }
 
 input[type="text"],
 input[type="password"],
 input[type="email"] {
   width: 100%;
-  padding: 12px; /* Increased padding for better touch targets */
-  border: 1px solid #dcdcdc; /* Lighter default border */
-  border-radius: 6px; /* Slightly more rounded corners */
+  padding: 12px; 
+  border: 1px solid #dcdcdc; 
+  border-radius: 6px; 
   box-sizing: border-box;
-  background-color: #fdfdfd; /* Very subtle background for input fields */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+  background-color: #fdfdfd; 
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
 
 input:focus {
   border-color: #0078D4;
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2); /* Soft blue glow on focus */
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.2); 
 }
 
 button {
   width: 100%;
-  padding: 14px; /* Increased padding for button */
+  padding: 14px; 
   background-color: #0078D4;
   color: white;
   border: none;
-  border-radius: 6px; /* Match input field border-radius */
-  margin-top: 25px; /* More space above the button */
+  border-radius: 6px; 
+  margin-top: 25px; 
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added transform and box-shadow for hover */
-  letter-spacing: 0.5px; /* Slight letter spacing for better readability */
-  text-transform: uppercase; /* Make button text uppercase */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.5px; 
+  text-transform: uppercase; 
 }
 
 button:hover {
   background-color: #005fa3;
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0 6px 12px rgba(0, 120, 212, 0.3); /* Blue shadow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 120, 212, 0.3); 
 }
 
 button:active {
-  transform: translateY(0); /* Press down effect */
-  box-shadow: 0 2px 4px rgba(0, 120, 212, 0.2); /* Smaller shadow on active */
-  background-color: #004c8c; /* Slightly darker when clicked */
+  transform: translateY(0); 
+  box-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+  background-color: #004c8c; 
 }
