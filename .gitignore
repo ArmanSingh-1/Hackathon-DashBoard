@@ -1,4 +1,5 @@
-instance/segmentation_dashboard.db
-utils/__pycache__/Data_Visualizer.cpython-313.pyc
-utils/__pycache__/Transformer.cpython-313.pyc
-.idea/.gitignore
+.env
+venv/
+instance/
+__pycache__/
+utils/__pycache__/

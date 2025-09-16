@@ -1,10 +1,10 @@
-# 📊 Customer Behavior Dashboard
+# 📊 Customer Insights Dashboard
 
 [![Python](https://img.shields.io/badge/Python-3.7%2B-blue.svg)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-Web%20Framework-lightgrey)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-A data visualization dashboard built using **Flask**, **Pandas**, **Matplotlib**, and **Seaborn**. It analyzes and visualizes customer purchasing behavior using a dataset (`Customer Purchasing Behaviors.csv`) and displays key insights via a clean and simple web interface.
+A data visualization dashboard built using **Flask**, **Pandas**, **Matplotlib**, and **Seaborn**. It analyzes and visualizes customer purchasing behavior from a CSV dataset and displays key insights via a clean and simple web interface.
 
 🔗 GitHub Repository: [Hackathon-DashBoard](https://github.com/ArmanSingh-1/Hackathon-DashBoard)
 
@@ -21,21 +21,6 @@ A data visualization dashboard built using **Flask**, **Pandas**, **Matplotlib**
 
 ---
 
-## 📁 Project Structure
-
-```
-Hackathon-DashBoard/
-├── app.py               
-├── Data_Visualizer.py             
-├── Customer Purchasing Behaviors.csv
-├── static/                  
-│   └── Graphs.png
-└── templates/
-    └── index.html          
-```
-
----
-
 ## ⚙️ How to Run Locally
 
 1. **Clone the repository**:
@@ -45,10 +30,19 @@ git clone https://github.com/ArmanSingh-1/Hackathon-DashBoard.git
 cd Hackathon-DashBoard
 ```
 
+2. **Create a virtual environment and activate it**:
+
+```bash
+
+python -m venv venv
+# On Windows: .\venv\Scripts\activate
+# On macOS/Linux: source venv/bin/activate
+```
+
 2. **Install required packages**:
 
 ```bash
-pip install flask pandas matplotlib seaborn
+pip install -r requirements.txt
 ```
 
 3. **Run the Flask application**:
@@ -89,7 +83,3 @@ http://127.0.0.1:5000/
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-
-
-
