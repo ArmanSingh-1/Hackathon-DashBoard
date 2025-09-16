@@ -7,7 +7,7 @@ def generate_graph(username, filename):
     location = "datasets/" + filename
     df = pd.read_csv(location)
 
-    destination = "static/" + username
+    destination = "Dashboard/static/" + username
     os.makedirs(destination, exist_ok=True)
 
     sns.set_theme(style="whitegrid")

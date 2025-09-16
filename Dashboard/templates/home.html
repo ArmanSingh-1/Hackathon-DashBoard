@@ -19,9 +19,9 @@
         <p>Data-powered customer segmentation for smarter marketing.</p>
         
         {% if session.username %}
-            <a href="{{ url_for('upload') }}" id="get-started-btn">Go to Dashboard</a>
+            <a href="{{ url_for('views.upload') }}" id="get-started-btn">Go to Dashboard</a>
         {% else %}
-            <a href="{{ url_for('signup') }}" id="get-started-btn">Get Started</a>
+            <a href="{{ url_for('auth.signup') }}" id="get-started-btn">Get Started</a>
         {% endif %}
     </section>
 
@@ -48,7 +48,7 @@
         <h2>We’d Love Your Feedback</h2>
         <p>Help us make this dashboard even better. Share your suggestions, issues, or overall experience below.</p>
         
-        <form action="{{ url_for('feedback') }}" method="post">
+        <form action="{{ url_for('views.feedback') }}" method="post">
             <textarea name="feedback" rows="6" placeholder="Your feedback matters to us..." required></textarea>
             <input type="text" name="name" placeholder="Your Name (optional)" />
             <input type="email" name="email" placeholder="Your Email (optional)" />
