@@ -1,31 +1,29 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from flask_sqlalchemy import SQLAlchemy
-import os
+from dotenv import load_dotenv
+
+# Import the db object and models from our new models.py file
+from models import db, User, UploadedFile
 from utils.Data_Visualizer import generate_graph
 
+# Load environment variables from the .env file
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+
+# --- App Configuration ---
+# Load the secret key from the environment variable
+app.secret_key = os.environ.get('SECRET_KEY', 'default_fallback_key')
 app.config["UPLOAD_FOLDER"] = "datasets/"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///segmentation_dashboard.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+# Initialize the database with our Flask app
+db.init_app(app)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-
-class UploadedFile(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), nullable=False)
-    filename = db.Column(db.String(120), nullable=False)
-    filepath = db.Column(db.String(300), nullable=False)
-
-# Routes
+# --- Routes ---
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -88,7 +86,7 @@ def upload():
 
     if request.method == "POST":
         uploaded_file = request.files.get("csv_file")
-        if uploaded_file:
+        if uploaded_file and uploaded_file.filename.endswith('.csv'):
             filename = secure_filename(uploaded_file.filename)
             file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
             os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
@@ -99,6 +97,9 @@ def upload():
             db.session.commit()
 
             return redirect(url_for("dashboard"))
+        else:
+            flash("Please upload a valid CSV file.", "danger")
+            return redirect(url_for("upload"))
 
     return render_template("upload.html")
 
@@ -121,5 +122,6 @@ def dashboard():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # Create tables if not exist
+        # Create tables if they don't exist
+        db.create_all()
     app.run(debug=True)
