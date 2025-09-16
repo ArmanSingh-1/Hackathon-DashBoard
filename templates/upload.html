@@ -1,54 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI Segment Project</title>
+{% extends "base.html" %}
+
+{% block title %}Upload CSV{% endblock %}
+
+{% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="logo">MyApp</div>
-        <ul class="nav-links">
-            <a class="logout-btn" href="{{ url_for('logout') }}">Logout</a>
-        </ul>
-    </nav>
+{% endblock %}
 
-    <section class="about-project">
-        <h2>About AI Segment Project</h2>
-        <p>
-            Our AI Segment project leverages advanced machine learning algorithms to intelligently segment your data.
-            Upload your CSV files and instantly gain actionable insights to drive better decisions.
-        </p>
-        <p>
-            With an intuitive interface and robust analytics, AI Segment makes data segmentation easier and faster than ever.
-        </p>
-    </section>
+{% block content %}
+<section class="about-project">
+    <h2>About the Project</h2>
+    <p>
+        Our project leverages advanced data visualization techniques to intelligently segment your data.
+        Upload your CSV files and instantly gain actionable insights to drive better decisions.
+    </p>
+</section>
 
-    <section class="upload-section">
-        <h2>Upload CSV File</h2>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
-            <input type="file" id="file-upload" name="csv_file" accept=".csv" required />
-            <div id="uploaded-file-name"></div>
-            <button id="upload-btn" type="submit">Upload</button>
-        </form>
-    </section>
+<section class="upload-section">
+    <h2>Upload CSV File</h2>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
+        <input type="file" id="file-upload" name="csv_file" accept=".csv" required />
+        <div id="uploaded-file-name"></div>
+        <button id="upload-btn" type="submit">Upload</button>
+    </form>
+</section>
+{% endblock %}
 
+{% block scripts %}
+<script>
+    const fileUpload = document.getElementById('file-upload');
+    const uploadedFileName = document.getElementById('uploaded-file-name');
 
-    <script>
-        const fileUpload = document.getElementById('file-upload');
-        const uploadedFileName = document.getElementById('uploaded-file-name');
-
-        fileUpload.style.display = 'none';
-
-        fileUpload.addEventListener('change', () => {
-            if (fileUpload.files.length > 0) {
-                uploadedFileName.textContent = `Selected file: ${fileUpload.files[0].name}`;
-            } else {
-                uploadedFileName.textContent = '';
-            }
-        });
-    </script>
-</body>
-</html>
+    fileUpload.addEventListener('change', () => {
+        if (fileUpload.files.length > 0) {
+            uploadedFileName.textContent = `Selected file: ${fileUpload.files[0].name}`;
+        } else {
+            uploadedFileName.textContent = '';
+        }
+    });
+</script>
+{% endblock %}

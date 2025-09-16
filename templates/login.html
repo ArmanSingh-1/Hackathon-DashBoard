@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Login Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form-page.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
     <form action="/login" method="post">
+        <h2>Login</h2>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
-        <br /><br />
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
-        <br /><br />
 
         <button type="submit">Login</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

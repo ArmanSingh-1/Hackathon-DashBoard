@@ -1,55 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Graph Analysis and Solutions</title>
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-</head>
-<body>
-    <header>
-        <nav>
-            <a class="logout-button" aria-label="Logout" href="{{ url_for('logout') }}">Logout</a>
-        </nav>
-        <h1>Graph Insights and Recommendations</h1>
-    </header>
+{% endblock %}
 
-    <main>
-        <article class="card">
-            <h2>1. Income vs Purchase</h2>
-            <figure>
-                <img src="{{ url_for('static', filename=username+'/income_vs_purchase.png') }}"
-                     alt="Graph showing correlation between Income and Purchase Patterns">
-                <figcaption>Trends in purchasing behavior by income bracket</figcaption>
-            </figure>
-            <p><strong>Solution:</strong> Consider segmenting marketing strategies based on income clusters to boost ROI.</p>
-        </article>
-        <hr>
+{% block content %}
+<header class="dashboard-header">
+    <h1>Graph Insights and Recommendations</h1>
+</header>
 
-        <article class="card">
-            <h2>2. Loyalty Score vs Purchase Frequency</h2>
-            <figure>
-                <img src="{{ url_for('static', filename=username+'/loyalty_score_vs_purchase_frequency.png') }}"
-                    alt="Chart illustrating loyalty score impact on purchase frequency">
-                <figcaption>Customer retention and behavior mapping</figcaption>
-            </figure>
-            <p><strong>Solution:</strong> Reward high-loyalty segments with exclusive promotions to further encourage engagement.</p>
-        </article>
-        <hr>
+<div class="card-container">
+    <article class="card">
+        <h2>1. Income vs Purchase</h2>
+        <figure>
+            <img src="{{ url_for('static', filename=username+'/income_vs_purchase.png') }}"
+                 alt="Graph showing correlation between Income and Purchase Patterns">
+            <figcaption>Trends in purchasing behavior by income bracket</figcaption>
+        </figure>
+        <p><strong>Solution:</strong> Consider segmenting marketing strategies based on income clusters to boost ROI.</p>
+    </article>
+    
+    <article class="card">
+        <h2>2. Loyalty Score vs Purchase Frequency</h2>
+        <figure>
+            <img src="{{ url_for('static', filename=username+'/loyalty_score_vs_purchase_frequency.png') }}"
+                alt="Chart illustrating loyalty score impact on purchase frequency">
+            <figcaption>Customer retention and behavior mapping</figcaption>
+        </figure>
+        <p><strong>Solution:</strong> Reward high-loyalty segments with exclusive promotions to further encourage engagement.</p>
+    </article>
 
-        <article class="card">
-            <h2>3. Average Spending by Region</h2>
-            <figure>
-                <img src="{{ url_for('static', filename=username+'/region_avg_spending.png') }}"
-                     alt="Bar graph displaying regional spending averages">
-                <figcaption>Insights on localized consumer behavior</figcaption>
-            </figure>
-            <p><strong>Solution:</strong> Focus targeted ads on regions with above-average spend; explore referral campaigns in low-spending areas.</p>
-        </article>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Insight Dashboard</p>
-    </footer>
-
-</body>
-</html>
+    <article class="card">
+        <h2>3. Average Spending by Region</h2>
+        <figure>
+            <img src="{{ url_for('static', filename=username+'/region_avg_spending.png') }}"
+                 alt="Bar graph displaying regional spending averages">
+            <figcaption>Insights on localized consumer behavior</figcaption>
+        </figure>
+        <p><strong>Solution:</strong> Focus targeted ads on regions with above-average spend; explore referral campaigns in low-spending areas.</p>
+    </article>
+</div>
+{% endblock %}

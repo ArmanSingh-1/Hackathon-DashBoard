@@ -1,0 +1,91 @@
+/* ====== CSS Reset & Global Styles ====== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-dark-blue: #0b1e4d;
+  --color-mid-blue: #142a66;
+  --color-light-blue: #6bb1ff;
+  --color-softer-blue: #a3c1ff;
+  --color-white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.content {
+  flex-grow: 1; /* Ensures the main content takes up available space */
+}
+
+/* ====== Header & Navigation ====== */
+header {
+  background-color: var(--color-dark-blue);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.top-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--color-light-blue);
+  letter-spacing: 1.4px;
+  user-select: none;
+  text-decoration: none;
+}
+
+.nav-links a {
+  color: var(--color-softer-blue);
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--color-light-blue);
+  outline: none;
+}
+
+/* ====== Footer ====== */
+footer {
+  background: var(--color-dark-blue);
+  color: var(--color-softer-blue);
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+/* ====== Responsive Styles ====== */
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .nav-links a {
+    margin: 0 0.5rem;
+  }
+}

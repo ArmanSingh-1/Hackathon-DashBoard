@@ -1,53 +1,39 @@
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Segment AI</title>
+{% block title %}Welcome to the Dashboard{% endblock %}
+
+{% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-</head>
-<body>
-    <header>
-        <nav class="top-nav">
-            <div class="logo">Segment AI</div>
-            <div class="nav-links">
-                <a href="/login">Login</a>
-                <a href="/signup">Signup</a>
-            </div>
-        </nav>
-    </header>
+{% endblock %}
 
-    <section class="welcome-section">
-        <h1>Welcome to Segment AI</h1>
-        <p>AI-powered customer segmentation for smarter marketing.</p>
-        <button id="get-started-btn">Get Started</button>
-    </section>
+{% block content %}
+<section class="welcome-section">
+    <h1>Welcome to the Customer Insights Dashboard</h1>
+    <p>Data-powered customer segmentation for smarter marketing.</p>
+    <button id="get-started-btn" onclick="location.href='{{ url_for('signup') }}'">Get Started</button>
+</section>
 
-    <section class="about-section">
-        <h2>About Segment AI</h2>
-        <p>
-            Segment AI helps businesses uncover valuable customer segments using machine learning. With real-time insights and intuitive graphs, you can craft smarter, data-driven campaigns with ease. Whether you're a startup or enterprise, Segment AI transforms your data into actionable marketing strategies—no coding expertise required. It’s segmentation, simplified.
-        </p>
-    </section>
+<section class="about-section">
+    <h2>About This Dashboard</h2>
+    <p>
+        This dashboard helps businesses uncover valuable customer segments using data visualization. With real-time insights and intuitive graphs, you can craft smarter, data-driven campaigns with ease. Whether you're a startup or enterprise, this tool transforms your data into actionable marketing strategies—no coding expertise required. It’s segmentation, simplified.
+    </p>
+</section>
 
-    <div class="demo">
-        <img src="static/graphs/income_vs_purchase.png" alt="Income vs Purchase">
-        <img src="static/graphs/loyalty_score_vs_purchase_frequency.png">
-        <img src="static/graphs/region_avg_spending.png" alt="Region Average Spending">
-    </div>
+<div class="demo">
+    <img src="{{ url_for('static', filename='graphs/income_vs_purchase.png') }}" alt="Income vs Purchase">
+    <img src="{{ url_for('static', filename='graphs/loyalty_score_vs_purchase_frequency.png') }}" alt="Loyalty Score vs Purchase Frequency">
+    <img src="{{ url_for('static', filename='graphs/region_avg_spending.png') }}" alt="Region Average Spending">
+</div>
 
-    <section class="feedback enhanced-feedback">
-        <h2>We’d Love Your Feedback</h2>
-        <p>Help us make Segment AI even better. Share your suggestions, issues, or overall experience below.</p>
-        <form action="/submit-feedback" method="post">
-            <textarea name="feedback" rows="6" cols="60" placeholder="Your feedback matters to us..." required></textarea>
-            <br />
-            <input type="text" name="name" placeholder="Your Name (optional)" />
-            <input type="email" name="email" placeholder="Your Email (optional)" />
-            <br />
-            <button type="submit" class="submit-btn">Submit Feedback</button>
-            </form>
-    </section>
-</body>
-</html>
+<section class="feedback">
+    <h2>We’d Love Your Feedback</h2>
+    <p>Help us make this dashboard even better. Share your suggestions, issues, or overall experience below.</p>
+    <form action="/submit-feedback" method="post">
+        <textarea name="feedback" rows="6" placeholder="Your feedback matters to us..." required></textarea>
+        <input type="text" name="name" placeholder="Your Name (optional)" />
+        <input type="email" name="email" placeholder="Your Email (optional)" />
+        <button type="submit" class="submit-btn">Submit Feedback</button>
+    </form>
+</section>
+{% endblock %}

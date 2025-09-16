@@ -1,174 +1,71 @@
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #ffffff; 
-  color: #0b1e4d; 
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.navbar {
-  background-color: #0b1e4d; 
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(11, 30, 77, 0.8);
-  user-select: none;
-}
-
-.logo {
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: #6bb1ff; 
-  letter-spacing: 1.4px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-.logout-btn {
-  background-color: #6bb1ff;
-  border: none;
-  padding: 0.5rem 1.3rem;
-  border-radius: 50px;
-  font-weight: 700;
-  color: #0b1e4d;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  user-select: none;
-}
-
-.logout-btn:hover,
-.logout-btn:focus {
-  background-color: #5a9ae6;
-  outline: none;
-}
-
-
+/* Styles specific to the upload page */
 .about-project {
   max-width: 700px;
-  margin: 3rem auto 2rem;
+  margin: 3rem auto;
   padding: 0 1.5rem;
   text-align: center;
-  color: #0b1e4d; 
 }
 
 .about-project h2 {
   font-size: 2.4rem;
   font-weight: 900;
-  margin-bottom: 1rem;
-  color: #142a66; 
-  letter-spacing: 0.6px;
+  color: var(--color-mid-blue);
 }
-
-.about-project p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
 
 .upload-section {
   max-width: 450px;
   margin: 2rem auto 4rem;
-  padding: 2rem;
-  background-color: #1e398f; 
+  padding: 2.5rem;
+  background-color: var(--color-dark-blue);
+  color: var(--color-white);
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(107, 177, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: #ffffff; 
-  user-select: none;
-  border: none;
 }
 
 .upload-section h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  font-weight: 900;
-  color: #a3c1ff; 
+  color: var(--color-softer-blue);
 }
 
-#file-upload {
+input[type="file"] {
   display: none;
 }
 
 .custom-file-upload {
   display: inline-block;
   padding: 0.75rem 1.8rem;
-  background-color: #6bb1ff;
-  color: #0b1e4d;
+  background-color: var(--color-light-blue);
+  color: var(--color-dark-blue);
   border-radius: 50px;
   font-weight: 700;
   cursor: pointer;
-  margin-bottom: 1.5rem;
   transition: background-color 0.3s ease;
-  user-select: none;
 }
 
-.custom-file-upload:hover,
-.custom-file-upload:focus {
+.custom-file-upload:hover {
   background-color: #5a9ae6;
-  outline: none;
 }
 
 #uploaded-file-name {
-  margin: 0.5rem 0 1.5rem;
+  margin: 1rem 0;
   font-style: italic;
-  color: #a3c1ff;
-  min-height: 1.2rem; 
+  color: var(--color-softer-blue);
+  min-height: 1.2rem;
 }
 
-
-#upload-btn
- {
-  background-color: #0b1e4d;
-  color: #6bb1ff;
+#upload-btn {
+  background-color: var(--color-white);
+  color: var(--color-dark-blue);
   font-weight: 700;
-  font-size: 1.1rem;
   padding: 0.75rem 2.5rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  margin: 0 0.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  user-select: none;
+  transition: all 0.3s ease;
 }
 
-#upload-btn:hover,
-#upload-btn:focus
- {
-  background-color: #142a66;
-  color: #ffffff;
-  outline: none;
-}
-
-
-@media (max-width: 600px) {
-  .about-project {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 100%;
-  }
-
-  #submit-btn {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-  }
+#upload-btn:hover {
+  background-color: var(--color-softer-blue);
 }
