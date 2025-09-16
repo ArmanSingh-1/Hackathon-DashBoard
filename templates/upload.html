@@ -1,42 +1,52 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
 {% extends "base.html" %}
 
-{% block title %}Upload CSV{% endblock %}
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Upload CSV
+{% endblock %}
 
+<!--Linking New CSS File-->
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/upload.css') }}">
 {% endblock %}
 
+<!--Main Content of the Upload Page-->
 {% block content %}
-<section class="about-project">
-    <h2>About the Project</h2>
-    <p>
-        Our project leverages advanced data visualization techniques to intelligently segment your data.
-        Upload your CSV files and instantly gain actionable insights to drive better decisions.
-    </p>
-</section>
+    <!--Guide to upload the CSV-->
+    <section class = "about-project">
+        <h2>About the Project</h2>
+        <p>
+            Our project leverages advanced data visualization techniques to intelligently segment your data.
+            Upload your CSV files and instantly gain actionable insights to drive better decisions.
+            Get actionable insights by uploading your customer data in CSV format.
+        </p>
+    </section>
 
-<section class="upload-section">
-    <h2>Upload CSV File</h2>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
-        <input type="file" id="file-upload" name="csv_file" accept=".csv" required />
-        <div id="uploaded-file-name"></div>
-        <button id="upload-btn" type="submit">Upload</button>
-    </form>
-</section>
+    <!--File Upload Section-->
+    <section class = "upload-section">
+        <h2>Upload Your CSV File for Analysis</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload">Choose CSV File</label>
+            <input type="file" id="file-upload" name="csv_file" accept=".csv" required />
+            <div id="uploaded-file-name"></div>
+            <button id="upload-btn" type="submit">Upload</button>
+        </form>
+    </section>
 {% endblock %}
 
+<!--JavaScript for File Input-->
 {% block scripts %}
-<script>
-    const fileUpload = document.getElementById('file-upload');
-    const uploadedFileName = document.getElementById('uploaded-file-name');
+    <script>
+        const fileUpload = document.getElementById('file-upload');
+        const uploadedFileName = document.getElementById('uploaded-file-name');
 
-    fileUpload.addEventListener('change', () => {
-        if (fileUpload.files.length > 0) {
-            uploadedFileName.textContent = `Selected file: ${fileUpload.files[0].name}`;
-        } else {
-            uploadedFileName.textContent = '';
-        }
-    });
-</script>
+        fileUpload.addEventListener('change', () => {
+            if (fileUpload.files.length > 0) {
+                uploadedFileName.textContent = `Selected file: ${fileUpload.files[0].name}`;
+            } else {
+                uploadedFileName.textContent = '';
+            }
+        });
+    </script>
 {% endblock %}

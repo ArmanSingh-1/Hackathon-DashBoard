@@ -1,22 +1,28 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
-
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/form-page.css') }}">
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Login
 {% endblock %}
 
+<!--Linking New CSS File-->
+{% block head %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/form-page.css') }}">
+{% endblock %}
+
+<!--Main Content of the Login Page-->
 {% block content %}
-<div class="form-container">
-    <form action="/login" method="post">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
+    <div class="form-container">
+        <form action="/login" method="post">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
 
-        <button type="submit">Login</button>
-    </form>
-</div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 {% endblock %}

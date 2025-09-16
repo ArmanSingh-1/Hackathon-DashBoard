@@ -1,39 +1,58 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
 {% extends "base.html" %}
 
-{% block title %}Welcome to the Dashboard{% endblock %}
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Welcome to the Dashboard
+{% endblock %}
 
+<!--Linking New CSS File-->
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 {% endblock %}
 
+<!--Main Content of the Home Page-->
 {% block content %}
-<section class="welcome-section">
-    <h1>Welcome to the Customer Insights Dashboard</h1>
-    <p>Data-powered customer segmentation for smarter marketing.</p>
-    <button id="get-started-btn" onclick="location.href='{{ url_for('signup') }}'">Get Started</button>
-</section>
+    <!--Welcome with Get Started-->
+    <section class="welcome-section">
+        <h1>Welcome to the Customer Insights Dashboard</h1>
+        <p>Data-powered customer segmentation for smarter marketing.</p>
+        
+        {% if session.username %}
+            <a href="{{ url_for('upload') }}" id="get-started-btn">Go to Dashboard</a>
+        {% else %}
+            <a href="{{ url_for('signup') }}" id="get-started-btn">Get Started</a>
+        {% endif %}
+    </section>
 
-<section class="about-section">
-    <h2>About This Dashboard</h2>
-    <p>
-        This dashboard helps businesses uncover valuable customer segments using data visualization. With real-time insights and intuitive graphs, you can craft smarter, data-driven campaigns with ease. Whether you're a startup or enterprise, this tool transforms your data into actionable marketing strategies—no coding expertise required. It’s segmentation, simplified.
-    </p>
-</section>
+    <!--Brief IntroDuction-->
+    <section class="about-section">
+        <h2>About This Dashboard</h2>
+        <p>
+            This dashboard helps businesses uncover valuable customer segments using data visualization. 
+            With real-time insights and intuitive graphs, you can craft smarter, data-driven campaigns with ease. 
+            Whether you're a startup or enterprise, this tool transforms your data into actionable marketing 
+            strategies—no coding expertise required. It’s segmentation, simplified.
+        </p>
+    </section>
 
-<div class="demo">
-    <img src="{{ url_for('static', filename='graphs/income_vs_purchase.png') }}" alt="Income vs Purchase">
-    <img src="{{ url_for('static', filename='graphs/loyalty_score_vs_purchase_frequency.png') }}" alt="Loyalty Score vs Purchase Frequency">
-    <img src="{{ url_for('static', filename='graphs/region_avg_spending.png') }}" alt="Region Average Spending">
-</div>
+    <!--Demo Images of Graphs-->
+    <div class="demo">
+        <img src="{{ url_for('static', filename='graphs/pic1.png') }}" alt="Income vs Purchase">
+        <img src="{{ url_for('static', filename='graphs/pic2.png') }}" alt="Loyalty Score vs Purchase Frequency">
+        <img src="{{ url_for('static', filename='graphs/pic3.png') }}" alt="Region Average Spending">
+    </div>
 
-<section class="feedback">
-    <h2>We’d Love Your Feedback</h2>
-    <p>Help us make this dashboard even better. Share your suggestions, issues, or overall experience below.</p>
-    <form action="/submit-feedback" method="post">
-        <textarea name="feedback" rows="6" placeholder="Your feedback matters to us..." required></textarea>
-        <input type="text" name="name" placeholder="Your Name (optional)" />
-        <input type="email" name="email" placeholder="Your Email (optional)" />
-        <button type="submit" class="submit-btn">Submit Feedback</button>
-    </form>
-</section>
+    <!--Feedback Section-->
+    <section class="feedback">
+        <h2>We’d Love Your Feedback</h2>
+        <p>Help us make this dashboard even better. Share your suggestions, issues, or overall experience below.</p>
+        
+        <form action="{{ url_for('feedback') }}" method="post">
+            <textarea name="feedback" rows="6" placeholder="Your feedback matters to us..." required></textarea>
+            <input type="text" name="name" placeholder="Your Name (optional)" />
+            <input type="email" name="email" placeholder="Your Email (optional)" />
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+    </section>
 {% endblock %}

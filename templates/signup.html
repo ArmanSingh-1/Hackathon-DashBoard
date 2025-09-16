@@ -1,28 +1,34 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
 {% extends "base.html" %}
 
-{% block title %}Sign Up{% endblock %}
-
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/form-page.css') }}">
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Sign Up
 {% endblock %}
 
+<!--Linking New CSS File-->
+{% block head %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/form-page.css') }}">
+{% endblock %}
+
+<!--Main Content of the Signup Page-->
 {% block content %}
-<div class="form-container">
-    <h2>Sign Up</h2>
-    <form action="/signup" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
 
-        <label for="confirm-password">Confirm Password:</label>
-        <input type="password" id="confirm-password" name="confirm_password" required />
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm_password" required />
 
-        <button type="submit">Sign Up</button>
-    </form>
-</div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
 {% endblock %}

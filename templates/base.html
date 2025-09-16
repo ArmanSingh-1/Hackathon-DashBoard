@@ -1,35 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Customer Insights Dashboard{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    {% block head %}{% endblock %}
-</head>
-<body>
-    <header>
-        <nav class="top-nav">
-            <div class="logo">Customer Insights</div>
-            <div class="nav-links">
-                {% if session.username %}
-                    <a href="{{ url_for('logout') }}">Logout</a>
-                {% else %}
-                    <a href="{{ url_for('login') }}">Login</a>
-                    <a href="{{ url_for('signup') }}">Signup</a>
-                {% endif %}
-            </div>
-        </nav>
-    </header>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8" />
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+        <title>
+            <!--Added For Dynamic titles-->
+            {% block title %}
+                Customer Insights Dashboard
+            {% endblock %}
+        </title>
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='css/base.css') }}">
+        <!--Added for New .css files-->
+        {% block head %}
+        {% endblock %}
+    </head>
 
-    <main class="content">
-        {% block content %}{% endblock %}
-    </main>
+    <body>
+        <!--Main Navigation Bar-->
+        <header>
+            <nav class = "top-nav">
+                <div class = "logo">Customer Insights</div>
+                <div class = "nav-links">
+                    {% if session.username %}
+                        <a href = "{{ url_for('logout') }}">Logout</a>
+                    {% else %}
+                        <a href = "{{ url_for('login') }}">Login</a>
+                        <a href = "{{ url_for('signup') }}">Signup</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
 
-    <footer>
-        &copy; 2024 Customer Insights. All rights reserved.
-    </footer>
-
-    {% block scripts %}{% endblock %}
-</body>
+        <!--Changes made by extending this-->
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+        
+        <!--Main Footer & Copyright-->
+        <footer>
+            &copy; 2024 Customer Insights. All rights reserved.
+        </footer>
+        
+        <!--Added for upload.html-->
+        {% block scripts %}
+        {% endblock %}
+    </body>
 </html>

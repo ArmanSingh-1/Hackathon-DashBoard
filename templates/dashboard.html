@@ -1,45 +1,63 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
-
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Dashboard
 {% endblock %}
 
+<!--Linking New CSS File-->
+{% block head %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/dashboard.css') }}">
+{% endblock %}
+
+<!--Main Content of the Dashboard Page-->
 {% block content %}
-<header class="dashboard-header">
-    <h1>Graph Insights and Recommendations</h1>
-</header>
+    <!--Graph Section-->
+    <header class = "dashboard-header">
+        <h1>Graph Insights and Recommendations</h1>
+    </header>
 
-<div class="card-container">
-    <article class="card">
-        <h2>1. Income vs Purchase</h2>
-        <figure>
-            <img src="{{ url_for('static', filename=username+'/income_vs_purchase.png') }}"
-                 alt="Graph showing correlation between Income and Purchase Patterns">
-            <figcaption>Trends in purchasing behavior by income bracket</figcaption>
-        </figure>
-        <p><strong>Solution:</strong> Consider segmenting marketing strategies based on income clusters to boost ROI.</p>
-    </article>
-    
-    <article class="card">
-        <h2>2. Loyalty Score vs Purchase Frequency</h2>
-        <figure>
-            <img src="{{ url_for('static', filename=username+'/loyalty_score_vs_purchase_frequency.png') }}"
-                alt="Chart illustrating loyalty score impact on purchase frequency">
-            <figcaption>Customer retention and behavior mapping</figcaption>
-        </figure>
-        <p><strong>Solution:</strong> Reward high-loyalty segments with exclusive promotions to further encourage engagement.</p>
-    </article>
+    <!--Container for Graphs-->
+    <div class = "graph-container">
+        <!--First Graph-->
+        <article class = "graph">
+            <h2>1. Income vs Purchase</h2>
+            <figure>
+                <img src = "{{ url_for('static', filename = username + '/income_vs_purchase.png') }}"
+                    alt = "Graph showing correlation between Income and Purchase Patterns">
+                <figcaption>Trends in purchasing behavior by income bracket</figcaption>
+            </figure>
+            <p><strong>Solution:</strong> 
+                Consider segmenting marketing strategies based on income clusters to boost ROI.
+            </p>
+        </article>
+        
+        <!--Second Graph-->
+        <article class="graph">
+            <h2>2. Loyalty Score vs Purchase Frequency</h2>
+            <figure>
+                <img src="{{ url_for('static', filename = username + '/loyalty_score_vs_purchase_frequency.png') }}"
+                    alt="Chart illustrating loyalty score impact on purchase frequency">
+                <figcaption>Customer retention and behavior mapping</figcaption>
+            </figure>
+            <p><strong>Solution:</strong> 
+                Reward high-loyalty segments with exclusive promotions to further encourage engagement.
+            </p>
+        </article>
 
-    <article class="card">
-        <h2>3. Average Spending by Region</h2>
-        <figure>
-            <img src="{{ url_for('static', filename=username+'/region_avg_spending.png') }}"
-                 alt="Bar graph displaying regional spending averages">
-            <figcaption>Insights on localized consumer behavior</figcaption>
-        </figure>
-        <p><strong>Solution:</strong> Focus targeted ads on regions with above-average spend; explore referral campaigns in low-spending areas.</p>
-    </article>
-</div>
+        <!--Third Graph-->
+        <article class="graph">
+            <h2>3. Average Spending by Region</h2>
+            <figure>
+                <img src="{{ url_for('static', filename=username+'/region_avg_spending.png') }}"
+                    alt="Bar graph displaying regional spending averages">
+                <figcaption>Insights on localized consumer behavior</figcaption>
+            </figure>
+            <p><strong>Solution:</strong> 
+                Focus targeted ads on regions with above-average spend; 
+                explore referral campaigns in low-spending areas.
+            </p>
+        </article>
+    </div>
 {% endblock %}
