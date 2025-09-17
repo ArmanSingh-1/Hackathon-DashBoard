@@ -69,6 +69,44 @@ header {
   outline: none;
 }
 
+/* ====== Flash Messages ====== */
+.flash-messages {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.alert {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  color: var(--color-white);
+  font-weight: 600;
+  transition: opacity 0.5s ease-out; /* Add transition for smooth fade */
+}
+
+.alert-success {
+  background-color: #28a745;
+}
+
+.alert-danger {
+  background-color: #dc3545;
+}
+
+.alert-warning {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.alert-info {
+  background-color: #17a2b8;
+}
+
+.alert-fade-out {
+  opacity: 0;
+}
+
 /* ====== Footer ====== */
 footer {
   background: var(--color-dark-blue);

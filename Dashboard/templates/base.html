@@ -36,6 +36,18 @@
             </nav>
         </header>
 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
         <!--Changes made by extending this-->
         <main class="content">
             {% block content %}
@@ -47,8 +59,29 @@
             &copy; 2024 Customer Insights. All rights reserved.
         </footer>
         
-        <!--Added for upload.html-->
+        <!--Added for upload.html anf Flash Messages-->
         {% block scripts %}
+            <script>
+                // Wait for the entire page to load
+                window.addEventListener('load', function() {
+                    // Find all elements with the class 'alert'
+                    const flashMessages = document.querySelectorAll('.alert');
+
+                    if (flashMessages) {
+                        flashMessages.forEach(function(message) {
+                            // Set a timeout to start the fade-out after 3 seconds (3000 milliseconds)
+                            setTimeout(function() {
+                                message.classList.add('alert-fade-out');
+                            }, 3000);
+
+                            // After the fade-out animation completes, set display to none
+                            setTimeout(function() {
+                                message.style.display = 'none';
+                            }, 3500); // 3000ms delay + 500ms animation
+                        });
+                    }
+                });
+            </script>
         {% endblock %}
     </body>
 </html>
