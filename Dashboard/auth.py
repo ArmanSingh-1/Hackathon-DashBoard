@@ -29,16 +29,22 @@ def signup():
             flash("Username or email already exists.", "danger")
             return redirect(url_for("auth.signup"))
 
+        is_first = (User.query.count() == 0)
+
         # Create a new user
         hashed_password = generate_password_hash(password) # Hash the password using Werkzeug
         new_user = User()
         new_user.username = username
         new_user.email = email
         new_user.password = hashed_password
+        new_user.role = 'admin' if is_first else 'user'  # First user is admin
         db.session.add(new_user)
         db.session.commit()
 
-        flash("Signup successful! Please log in.", "success")
+        if is_first:
+            flash("Admin account created successfully! Please log in.", "success")
+        else:
+            flash("Signup successful! Please log in.", "success")
         return redirect(url_for("auth.login"))
 
     return render_template("signup.html")
@@ -57,7 +63,8 @@ def login():
 
         # Verify user and password
         if user and check_password_hash(user.password, password):
-            session["username"] = username
+            session["username"] = user.username
+            session["role"] = user.role
             flash("Login successful.", "success")
             return redirect(url_for("views.upload"))
         else:
