@@ -1,0 +1,49 @@
+.admin-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+}
+
+.feedback-list {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f9f9f9;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+
+th {
+    font-weight: 600;
+    color: #555;
+}
+
+td.feedback-text {
+    max-width: 400px;
+    white-space: pre-wrap; /* Allows text to wrap */
+    word-wrap: break-word;
+}

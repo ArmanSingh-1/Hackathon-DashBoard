@@ -22,6 +22,8 @@
                 <div class = "logo">Customer Insights</div>
                 <div class = "nav-links">
                     {% if session.username %}
+                        <span>Welcome, {{ session.username }}!</span>
+                        <a href = "{{ url_for('views.profile') }}">Profile</a>
                         <a href = "{{ url_for('auth.logout') }}">Logout</a>
                     {% else %}
                         <a href = "{{ url_for('auth.login') }}">Login</a>
@@ -40,6 +42,9 @@
         <!--Main Footer & Copyright-->
         <footer>
             &copy; 2024 Customer Insights. All rights reserved.
+            {% if session.username == 'admin' %}
+                <a href="{{ url_for('views.admin') }}" class="admin-link">Admin Panel</a>
+            {% endif %}
         </footer>
         
         <!--Added for upload.html-->

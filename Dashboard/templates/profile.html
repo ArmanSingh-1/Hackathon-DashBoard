@@ -1,0 +1,57 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
+{% extends "base.html" %}
+
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    User Profile
+{% endblock %}
+
+<!--Linking New CSS File-->
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/profile.css') }}">
+{% endblock %}
+
+<!--Main Content of the Profile Page-->
+{% block content %}
+    <div class = "profile-container">
+        <header class="profile-header">
+            <h1>User Profile</h1>
+        </header>
+
+        <section class="profile-details">
+            <h2>Account Information</h2>
+            <div class="detail-item">
+                <strong>Username:</strong>
+                <span>{{ user.username }}</span>
+            </div>
+            <div class="detail-item">
+                <strong>Email:</strong>
+                <span>{{ user.email }}</span>
+            </div>
+        </section>
+
+        <section class="upload-history">
+            <h2>Upload History</h2>
+            {% if files %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Filename</th>
+                            <th>Upload Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for file in files %}
+                            <tr>
+                                <td>{{ file.filename }}</td>
+                                <td>{{ file.submitted_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>You have not uploaded any files yet.</p>
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

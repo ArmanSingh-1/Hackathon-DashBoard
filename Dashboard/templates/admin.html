@@ -1,0 +1,50 @@
+<!--All Code From base.html will be Updated or Remains as it is.-->
+{% extends "base.html" %}
+
+<!--Dynamic Title for Each Page-->
+{% block title %}
+    Admin - View Feedback
+{% endblock %}
+
+<!--Linking New CSS File-->
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+<!--Main Content of the Admin Page-->
+{% block content %}
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Submitted Feedback</h1>
+        </header>
+
+        <section class="feedback-list">
+            {% if feedback_entries %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Feedback</th>
+                            <th>Date Submitted</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in feedback_entries %}
+                            <tr>
+                                <td>{{ entry.id }}</td>
+                                <td>{{ entry.name }}</td>
+                                <td>{{ entry.email or 'N/A' }}</td>
+                                <td class="feedback-text">{{ entry.feedback_text }}</td>
+                                <td>{{ entry.submitted_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No feedback has been submitted yet.</p>
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

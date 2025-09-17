@@ -79,6 +79,16 @@ footer {
   margin-top: auto; /* Pushes the footer to the bottom */
 }
 
+.admin-link {
+  color: var(--color-softer-blue);
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.admin-link:hover {
+    color: var(--color-light-blue);
+}
+
 /* ====== Responsive Styles ====== */
 @media (max-width: 768px) {
   .top-nav {

@@ -1,7 +1,7 @@
 import os
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from werkzeug.utils import secure_filename
-from .models import db, UploadedFile, Feedback
+from .models import db, User, UploadedFile, Feedback
 from utils.Data_Visualizer import generate_graph
 
 views = Blueprint('views', __name__)
@@ -94,3 +94,42 @@ def feedback():
 
         flash("Thank you for your feedback!", "success")
     return redirect(url_for("views.home"))
+
+
+# Profile route
+@views.route("/profile")
+def profile():
+    # Ensure user is logged in
+    if "username" not in session:
+        flash("Please log in to view your profile.", "warning")
+        return redirect(url_for("auth.login"))
+
+    # Get the current user's username from the session
+    username = session["username"]
+    
+    # Fetch the user's details from the database
+    user = User.query.filter_by(username=username).first()
+    
+    # Fetch all files uploaded by the user, ordered by most recent
+    files = UploadedFile.query.filter_by(username=username).order_by(UploadedFile.submitted_at.desc()).all()
+    
+    return render_template("profile.html", user=user, files=files)
+
+# Admin route to view feedback
+@views.route("/admin")
+def admin():
+    # Ensure user is logged in before checking their role
+    if "username" not in session:
+        flash("You must be logged in to access this page.", "warning")
+        return redirect(url_for("auth.login"))
+
+    # Fetch the current user from the database
+    user = User.query.filter_by(username=session["username"]).first()
+
+    # Check if the user has admin privileges
+    if user and user.role == "admin":
+        feedback_entries = Feedback.query.order_by(Feedback.submitted_at.desc()).all()
+        return render_template("admin.html", feedback_entries=feedback_entries)
+    else:
+        flash("You do not have permission to access this page.", "danger")
+        return redirect(url_for("views.home"))

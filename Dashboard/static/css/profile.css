@@ -1,0 +1,68 @@
+.profile-container {
+    max-width: 900px;  
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+}
+
+.profile-details, .upload-history {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+.profile-details h2, .upload-history h2 {
+    margin-top: 0;
+    color: var(--color-mid-blue);
+    font-size: 1.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+}
+
+.detail-item strong {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+thead {
+    background-color: #f9f9f9;
+}
+
+th, td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: 600;
+    color: #555;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
