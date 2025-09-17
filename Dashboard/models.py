@@ -1,6 +1,12 @@
 # utilizing Flask-SQLAlchemy for database models
 from flask_sqlalchemy import SQLAlchemy
 import datetime
+from datetime import timezone, timedelta
+
+# Set timezone to IST (Indian Standard Time)
+ist_time = timezone(timedelta(hours=5, minutes=30))
+def convert_ist():
+    return datetime.datetime.now(ist_time)
 
 # Initialize the SQLAlchemy object
 db = SQLAlchemy()
@@ -19,7 +25,7 @@ class UploadedFile(db.Model):
     username = db.Column(db.String(80), nullable=False)
     filename = db.Column(db.String(120), nullable=False)
     filepath = db.Column(db.String(300), nullable=False)
-    submitted_at = db.Column(db.DateTime, default=datetime.datetime.now(datetime.timezone.utc))
+    submitted_at = db.Column(db.DateTime, default=convert_ist)
 
 # Model for feedback submissions
 class Feedback(db.Model):
@@ -27,4 +33,4 @@ class Feedback(db.Model):
     name = db.Column(db.String(100), nullable=True) # Optional
     email = db.Column(db.String(120), nullable=True) # Optional
     feedback_text = db.Column(db.Text, nullable=False)
-    submitted_at = db.Column(db.DateTime, default=datetime.datetime.now(datetime.timezone.utc))
+    submitted_at = db.Column(db.DateTime, default=convert_ist)

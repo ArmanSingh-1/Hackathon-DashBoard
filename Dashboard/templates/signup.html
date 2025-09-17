@@ -14,8 +14,11 @@
 <!--Main Content of the Signup Page-->
 {% block content %}
     <div class="form-container">
-        <h2>Sign Up</h2>
-        <form action="{{ url_for('auth.signup') }}" method="post">
+        <form id="signup-form">
+            <h2>Sign Up</h2>
+            
+            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required />
 
@@ -24,11 +27,70 @@
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required />
-
+            
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" id="confirm-password" name="confirm_password" required />
+
+            <div class="show-password-container">
+                <input type="checkbox" id="show-password-toggle">
+                <label for="show-password-toggle">Show Passwords</label>
+            </div>
 
             <button type="submit">Sign Up</button>
         </form>
     </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        const toggle = document.getElementById('show-password-toggle');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+
+        toggle.addEventListener('change', function() {
+            const type = this.checked ? 'text' : 'password';
+            password.type = type;
+            confirmPassword.type = type;
+        });
+    </script>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirm_password = document.getElementById('confirm-password').value;
+            const errorMessageDiv = document.getElementById('error-message');
+
+            fetch("{{ url_for('auth.api_signup') }}", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    username: username, 
+                    email: email, 
+                    password: password, 
+                    confirm_password: confirm_password 
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // On success, redirect to the login page
+                    window.location.href = data.redirect_url;
+                } else {
+                    // On failure, show the error message without reloading
+                    errorMessageDiv.textContent = data.message;
+                    errorMessageDiv.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessageDiv.textContent = 'An unexpected error occurred.';
+                errorMessageDiv.style.display = 'block';
+            });
+        });
+    </script>
 {% endblock %}

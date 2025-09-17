@@ -10,6 +10,7 @@ body {
   background-color: #f4f6f8;
 }
 
+/* ==== Form Feilds ==== */
 .form-container {
   background-color: #ffffff;
   padding: 30px 40px;
@@ -62,4 +63,29 @@ body {
 
 .form-container button:hover {
   background-color: var(--color-mid-blue);
+}
+
+/* ==== Password Checkbox ==== */
+.show-password-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.show-password-container input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.show-password-container label {
+    margin: 0;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+}
+
+/* ==== Flash Messages ==== */
+#error-message {
+  margin-bottom: 1rem;
 }

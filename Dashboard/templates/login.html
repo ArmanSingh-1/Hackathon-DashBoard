@@ -14,15 +14,71 @@
 <!--Main Content of the Login Page-->
 {% block content %}
     <div class="form-container">
-        <form action = "{{ url_for('auth.login') }}" method="post">
+        <form id="login-form">
             <h2>Login</h2>
+            
+            <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required />
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required />
 
+            <div class="show-password-container">
+                <input type="checkbox" id="show-password-toggle">
+                <label for="show-password-toggle">Show Password</label>
+            </div>
+
             <button type="submit">Login</button>
         </form>
     </div>
+{% endblock %}
+
+<!--JavaScript for Show Password Toggle-->
+{% block scripts %}
+    <script>
+        const toggle = document.getElementById('show-password-toggle');
+        const passwordInput = document.getElementById('password');
+
+        toggle.addEventListener('change', function() {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+    
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            // Prevent the default form submission (which causes a page reload)
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessageDiv = document.getElementById('error-message');
+
+            // Send the data to our new API endpoint
+            fetch("{{ url_for('auth.api_login') }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: username, password: password }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // If login is successful, redirect the user
+                    window.location.href = data.redirect_url;
+                } else {
+                    // If login fails, show the error message without reloading
+                    errorMessageDiv.textContent = data.message;
+                    errorMessageDiv.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessageDiv.textContent = 'An unexpected error occurred. Please try again.';
+                errorMessageDiv.style.display = 'block';
+            });
+        });
+    </script>
 {% endblock %}

@@ -17,7 +17,8 @@
         <header class="admin-header">
             <h1>Submitted Feedback</h1>
         </header>
-
+        
+        <!--Feedback Table-->
         <section class="feedback-list">
             {% if feedback_entries %}
                 <table>
@@ -30,6 +31,8 @@
                             <th>Date Submitted</th>
                         </tr>
                     </thead>
+
+                    <!--FeedBack Entries-->
                     <tbody>
                         {% for entry in feedback_entries %}
                             <tr>

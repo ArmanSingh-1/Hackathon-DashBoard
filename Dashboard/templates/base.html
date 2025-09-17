@@ -21,6 +21,7 @@
             <nav class = "top-nav">
                 <div class = "logo">Customer Insights</div>
                 <div class = "nav-links">
+                    <!--Conditional Rendering Based on User Authentication-->
                     {% if session.username %}
                         <span>Welcome, {{ session.username }}!</span>
                         {% if session.role == 'admin' %}
@@ -35,7 +36,9 @@
                 </div>
             </nav>
         </header>
-
+        
+        <!--Flash Messages-->
+        <!--Inbuilt Method of Flask and Get's a tuple as input-->
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <div class="flash-messages">
@@ -67,17 +70,17 @@
                     // Find all elements with the class 'alert'
                     const flashMessages = document.querySelectorAll('.alert');
 
-                    if (flashMessages) {
+                    // Check if there are any flash messages
+                    if (flashMessages.length > 0) {
                         flashMessages.forEach(function(message) {
-                            // Set a timeout to start the fade-out after 3 seconds (3000 milliseconds)
-                            setTimeout(function() {
+                            // Fade-out after 3000 milliseconds (3 seconds)
+                            setTimeout(() => {
                                 message.classList.add('alert-fade-out');
                             }, 3000);
 
-                            // After the fade-out animation completes, set display to none
-                            setTimeout(function() {
+                            setTimeout(() => {
                                 message.style.display = 'none';
-                            }, 3500); // 3000ms delay + 500ms animation
+                            }, 3500); // 3000ms delay + 500ms invisible transition
                         });
                     }
                 });
